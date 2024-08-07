@@ -15,11 +15,7 @@ const handleEvent = async (event) => {
   const response = await openAIChat(event.message.text);
 
   // create an echoing text message
-  const echo = {
-    altText: "You get a flex message",
-    type: "flex",
-    contents: JSON.parse(event.message.text),
-  };
+  const echo = { type: "text", text: response };
 
   // use reply API
   return client.replyMessage({

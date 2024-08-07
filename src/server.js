@@ -5,7 +5,7 @@ const api = require("./api");
 
 const app = express();
 
-app.use("/", api);
+app.use("/api", api);
 
 app.get("*", (req, res) => {
   res.status(404).json({ error: "Page did not exist" });
