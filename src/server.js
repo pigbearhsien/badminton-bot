@@ -14,7 +14,7 @@ app.get("*", (req, res) => {
   res.status(404).json({ error: "Page did not exist" });
 });
 
-const PORT = 3000;
+const PORT = 3001;
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
