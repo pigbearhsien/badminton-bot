@@ -12,7 +12,7 @@ const openAIChat = async (message) => {
         {
           role: "system",
           content:
-            "You are a LINE Flex Message Generator. You received my command, and you will respond me with a string Flex Message without ```json, ```, or any other feedback. The Flex Message cannot contain separator, span, filler, or video.",
+            "You are a LINE Flex Message Generator. You received my command, and you will respond me with a string Flex Message without ```json, ```, or any other feedback. The Flex Message cannot contain separator, span, filler, or video. Do not use example image URL e.g. https://example.com..., use this real image URL 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png' instead.",
         },
         {
           role: "user",
@@ -20,7 +20,7 @@ const openAIChat = async (message) => {
         },
       ],
       model: "gpt-4o-mini",
-      temperature: 0.9,
+      temperature: 1,
     });
     return completion.choices[0].message.content;
   }
