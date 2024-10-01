@@ -43,10 +43,6 @@ const handleEvent = async (event) => {
     });
   } catch (error) {
     console.error(error);
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: "An error occurred. Please try again later.",
-    });
   }
 };
 
