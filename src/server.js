@@ -6,15 +6,15 @@ const api = require("./api");
 const PORT = 3001;
 
 // Initialize the database and start the server
-// const { initDB } = require("./utils/chat");
+const { initDB } = require("./utils/chat");
 
-// initDB()
-//   .then(() => {
-//     console.log("MongoDB is connected");
-//   })
-//   .catch((err) => {
-//     console.error("Failed to initialize database", err);
-//   });
+initDB()
+  .then(() => {
+    console.log("MongoDB is connected");
+  })
+  .catch((err) => {
+    console.error("Failed to initialize database", err);
+  });
 
 const app = express();
 

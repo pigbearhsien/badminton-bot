@@ -23,9 +23,8 @@ const initDB = async () => {
 };
 
 const getConversation = async (userId) => {
-  await initDB();
   if (!db) {
-    throw new Error("Database not initialized");
+    await initDB();
   }
   const collection = db.collection("Chat");
   const conversation = await collection.findOne({ userId });
@@ -33,9 +32,8 @@ const getConversation = async (userId) => {
 };
 
 const saveConversation = async (userId, messages) => {
-  await initDB();
   if (!db) {
-    throw new Error("Database not initialized");
+    await initDB();
   }
   const collection = db.collection("Chat");
   await collection.updateOne(
