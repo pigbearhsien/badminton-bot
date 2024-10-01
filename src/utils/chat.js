@@ -11,13 +11,13 @@ const initDB = async () => {
 };
 
 const getConversation = async (userId) => {
-  const collection = db.collection("chat");
+  const collection = db.collection("Chat");
   const conversation = await collection.findOne({ userId });
   return conversation ? conversation.messages : [];
 };
 
 const saveConversation = async (userId, messages) => {
-  const collection = db.collection("chat");
+  const collection = db.collection("Chat");
   await collection.updateOne(
     { userId },
     { $set: { messages } },
