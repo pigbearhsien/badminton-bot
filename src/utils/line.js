@@ -17,9 +17,14 @@ const handleEvent = async (event) => {
   try {
     if (event.message.text.toLowerCase() === "reset") {
       await saveConversation(userId, []); // Clear the conversation history
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Conversation has been reset.",
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "Conversation has been reset.",
+          },
+        ],
       });
     }
 
