@@ -16,9 +16,8 @@ const handleEvent = async (event) => {
 
   // create an echoing text message
   const echo = {
-    altText: "You get a flex message",
-    type: "flex",
-    contents: JSON.parse(event.message.text),
+    type: "text",
+    contents: response,
   };
 
   // use reply API
