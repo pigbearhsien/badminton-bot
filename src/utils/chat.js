@@ -1,19 +1,30 @@
 // conversation.js
 const { MongoClient } = require("mongodb");
 
+const uri = process.env.MONGO_URI;
+
+const options = {
+  serverSelectionTimeoutMS: 5000, // Adjust as needed
+};
+
 let client;
 let db;
+let clientPromise;
 
 const initDB = async () => {
   if (db) return db; // Return the existing connection if it exists
 
-  const uri = process.env.MONGO_URI;
-  client = new MongoClient(uri);
+  if (!clientPromise) {
+    client = new MongoClient(uri, options);
+    clientPromise = client.connect();
+  }
+
+  client = new MongoClient(uri, options);
 
   try {
-    await client.connect();
+    await clientPromise;
     console.log("Connected to MongoDB Atlas");
-    db = client.db("Noah"); // Replace with your database name
+    db = client.db("Noah");
     return db;
   } catch (error) {
     console.error("MongoDB connection error:", error);
