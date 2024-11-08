@@ -21,7 +21,7 @@ router.post("/callback", line.middleware(config), (req, res) => {
 
 const jsonParser = express.json();
 
-router.post("/test", jsonParser, async (req, res) => {
+router.get("/test", jsonParser, async (req, res) => {
   const { message } = req.body;
 
   if (!message) {
